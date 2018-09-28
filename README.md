@@ -13,7 +13,7 @@ For basic classifying, you can do it like this:
 ```go
 import (
 	"fmt"
-	"github.com/RadhiFadlillah/go-bayesian"
+	"github.com/CyrusF/go-bayesian"
 )
 
 // Declare class
