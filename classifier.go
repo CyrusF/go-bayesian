@@ -4,6 +4,7 @@ import (
 	"encoding/gob"
 	"math"
 	"os"
+	"io"
 )
 
 const (
