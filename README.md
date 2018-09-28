@@ -4,6 +4,8 @@
 
 Go-Bayesian is a Go package for doing classification using Naive-Bayes algorithm. There are two Naive-Bayes models that implemented in this package, which are Multinomial TF and Multinomial Boolean.
 
+It was based on [RadhiFadlillah's project](github.com/RadhiFadlillah/go-bayesian), and this one was added a new funtion of load model from a byte slice. It is useful to build project into a single binary file.
+
 ## Usage Examples
 
 For basic classifying, you can do it like this:
@@ -61,6 +63,19 @@ Later, you can create a new Classifier from that file :
 func main() {
 	// New classifier from file
 	classifier, err := bayesian.NewClassifierFromFile("./my-classifier")
+	if err != nil {
+		panic(err)
+	}
+}
+```
+
+or from the io.Reader or byte slice
+
+```go
+func main() {
+	// New classifier from io.Reader
+	byteReader := bytes.NewReader([]byte(""))
+	classifier, err := bayesian.NewClassifierFromFileStream(byteReader)
 	if err != nil {
 		panic(err)
 	}
