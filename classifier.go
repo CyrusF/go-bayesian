@@ -73,6 +73,18 @@ func NewClassifierFromFile(path string) (Classifier, error) {
 	return classifier, err
 }
 
+// NewClassifierFromFile returns new Classifier with configuration loaded from a byte stream in file
+func NewClassifierFromFileStream(fl io.Reader) (Classifier, error) {
+	classifier := Classifier{}
+
+	err := gob.NewDecoder(fl).Decode(&classifier)
+	if err != nil {
+		return classifier, err
+	}
+
+	return classifier, err
+}
+
 // Learn executes learning process for this classifier
 func (classifier *Classifier) Learn(docs ...Document) {
 	classifier.NAllDocument += len(docs)
